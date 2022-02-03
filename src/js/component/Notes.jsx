@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "../../styles/Notes.css";
 import NewTaskCreated from "./NewTaskCreated.jsx";
 
+const myList = {
+	label: "",
+	done: false,
+};
+
 const Notes = () => {
 	const [task, setTask] = useState("");
 	const onChange = (e) => {
@@ -9,13 +14,15 @@ const Notes = () => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		document.querySelector(".myInput").value = "";
+		// setTask("");
 	};
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
 				<div className="container">
 					<input
-						className="form-control"
+						className="form-control myInput"
 						value={task}
 						onChange={onChange}
 						type="text"
